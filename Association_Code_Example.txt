@@ -1,0 +1,125 @@
+**************************
+Student Class:
+**************************
+
+public class Student
+{
+	public Address address[] = new Address[2] ;
+	
+	public String name ; // instance varibale
+	public String id ;   // Non-static field
+	private float cgpa ;
+	
+	public static int totalNumberStudents ; // class variable
+	private static String classTime ; // static field 
+
+	
+	static
+	{
+		totalNumberStudents = 30 ; // static block is used to initialize class variable
+		classTime = "10:00 AM" ;
+	}
+	
+	public Student()
+	{
+		
+	}
+	public Student( String name, String id , float cgpa, Address address1, Address address2)
+	{
+		this.name = name ;
+		this.id = id ;
+		this.cgpa = cgpa ;
+		this.address[0] = address1 ;
+		this.address[1] = address2 ;
+	}
+	public Student(String name)
+	{
+		this.name = name ;
+	}
+	public Student(String id, float cgpa)
+	{
+		this.id = id ;
+		this.cgpa = cgpa ;
+	}
+	public Student(float cgpa)
+	{
+		this.cgpa = cgpa ;
+	}
+	
+	public void showStudentInfo()
+	{
+		System.out.println("Name: "+name) ;
+		System.out.println("ID: "+id) ;				// Non-static method
+		System.out.println("Cgpa: "+cgpa) ;
+		System.out.println("House Name: "+address[0].getHouseName()+ " House No: "+ address[0].getHouseNo()+ " Road No:"+ address[0].getRoadNo()) ;
+		System.out.println("House Name: "+address[1].getHouseName()+ " House No: "+ address[1].getHouseNo()+ " Road No:"+ address[1].getRoadNo()) ;
+		
+	}	
+	public static void showClassInfo()
+	{
+		System.out.println("Class Time: "+classTime) ; // Static method
+		System.out.println("Total Number Students: "+totalNumberStudents) ;
+	}
+	public void setCgpa(float cgpa)
+	{
+		this.cgpa = cgpa ;
+		
+	}
+	public float getCgpa()
+	{
+		return this.cgpa;
+		
+	}
+	
+	
+	
+	
+	
+}
+
+******************************************************************************************
+**********************
+Address Class:
+**********************
+public class Address
+{
+	private String houseName ;
+	private int houseNo ;
+	private int roadNo ;
+	
+	public Address(String houseName, int houseNo, int roadNo)
+	{
+		this.houseName = houseName ;
+		this.houseNo = houseNo ;
+		this.roadNo = roadNo ;
+	}
+	public String getHouseName()
+	{
+		return this.houseName ;
+	}
+	public int getHouseNo()
+	{
+		return this.houseNo  ;
+	}
+	public int getRoadNo()
+	{
+		return this.roadNo ;
+	}
+	
+}
+******************************************************************************************************
+*********************
+Main Class:
+*********************
+public class MainAssociation
+{
+	public static void main(String arg[])
+	{
+		Address address1 = new Address("SampleHouse1", 46, 14) ;
+		Address address2 = new Address("SampleHouse2", 47, 15) ;
+		
+		Student s1 = new Student("abc", "1-2" , 4.00f, address1, address2) ;
+		s1.showStudentInfo() ;
+	}
+	
+}
